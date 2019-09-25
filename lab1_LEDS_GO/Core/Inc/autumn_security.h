@@ -5,7 +5,7 @@
 
 typedef struct Password {
 	size_t len;
-	Press pass[];
+	Press pass[20];
 } Password;
 
 void start_game(Password* pass);
