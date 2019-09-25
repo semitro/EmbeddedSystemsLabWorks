@@ -5,9 +5,7 @@
 #define BLINK_TIME 80
 
 void blink_led_once(Color color) {
-	HAL_GPIO_WritePin(GPIOD, color, GPIO_PIN_SET);
-	HAL_Delay(BLINK_TIME);
-	HAL_GPIO_WritePin(GPIOD, color, GPIO_PIN_RESET);
+	light_led(color, BLINK_TIME);
 }
 
 void blink_led(Color color, int times) {
@@ -15,6 +13,12 @@ void blink_led(Color color, int times) {
 		blink_led_once(color);
 		HAL_Delay(BLINK_TIME);
 	}
+}
+
+void light_led(Color color, int time) {
+	HAL_GPIO_WritePin(GPIOD, color, GPIO_PIN_SET);
+	HAL_Delay(time);
+	HAL_GPIO_WritePin(GPIOD, color, GPIO_PIN_RESET);
 }
 
 Press read_press() {

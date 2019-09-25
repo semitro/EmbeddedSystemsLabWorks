@@ -13,6 +13,7 @@ typedef enum Press {
 	PRESS_SHORT, PRESS_LONG
 } Press;
 
+void light_led(Color, int time);
 void blink_led_once(Color);
 void blink_led(Color, int times);
 
