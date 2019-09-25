@@ -16,3 +16,16 @@ void blink_led(Color color, int times) {
 		HAL_Delay(BLINK_TIME);
 	}
 }
+
+Press read_press() {
+	while(HAL_GPIO_ReadPin(BUTTON) == GPIO_PIN_SET)
+		;
+	unsigned int counter = 0;
+	while(HAL_GPIO_ReadPin(BUTTON) == GPIO_PIN_RESET) {
+		counter++;
+	}
+	if (counter > 300000) {
+		return PRESS_LONG;
+	}
+	return PRESS_SHORT;
+}

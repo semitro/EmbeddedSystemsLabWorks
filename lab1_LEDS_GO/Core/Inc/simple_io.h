@@ -4,13 +4,13 @@
 #include "stm32f4xx_hal.h"
 
 typedef enum Color {
-	RED = GPIO_PIN_15,
-	GREEN = GPIO_PIN_13,
-	YELLOW = GPIO_PIN_14
+	COLOR_RED = GPIO_PIN_15,
+	COLOR_GREEN = GPIO_PIN_13,
+	COLOR_YELLOW = GPIO_PIN_14
 } Color;
 
 typedef enum Press {
-	SHORT, LONG
+	PRESS_SHORT, PRESS_LONG
 } Press;
 
 void blink_led_once(Color);
