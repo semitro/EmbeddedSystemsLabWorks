@@ -89,22 +89,18 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-//  struct Password secpass = {
-//		  9,
-//		  {
-//				  SHORT, SHORT, SHORT, LONG, LONG, LONG, SHORT, SHORT, SHORT
-//		  }
-//  };
+  struct Password secpass = {
+		  9,
+		  {
+				  PRESS_SHORT, PRESS_SHORT, PRESS_SHORT, PRESS_LONG, PRESS_LONG, PRESS_LONG, PRESS_SHORT, PRESS_SHORT, PRESS_SHORT
+		  }
+  };
   /* USER CODE END 2 */
 
   /* Infinite loop */
   while(1){
   /* USER CODE BEGIN WHILE */
-	  blink_led_once(YELLOW);
-	  HAL_Delay(1000);
-	  blink_led(GREEN, 5);
-	  blink_led(RED, 3);
-	  HAL_Delay(1000);
+	  start_game(&secpass);
     /* USER CODE END WHILE */
   }
     /* USER CODE BEGIN 3 */
