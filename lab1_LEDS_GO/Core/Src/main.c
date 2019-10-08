@@ -100,7 +100,7 @@ int main(void)
   /* Infinite loop */
   while(1){
   /* USER CODE BEGIN WHILE */
-	  start_game(&secpass);
+	  security(&secpass);
     /* USER CODE END WHILE */
   }
     /* USER CODE BEGIN 3 */

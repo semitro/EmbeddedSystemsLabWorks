@@ -8,6 +8,6 @@ typedef struct Password {
 	Press pass[20];
 } Password;
 
-void start_game(Password* pass);
+void security(Password* pass);
 
 #endif // SEC_SEC_H

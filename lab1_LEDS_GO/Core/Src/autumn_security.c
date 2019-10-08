@@ -1,6 +1,6 @@
 #include "autumn_security.h"
 
-void start_game(Password* pass){
+void security(Password* pass){
 	size_t level = 0;
 	size_t failed = 0;
 	while (level != pass->len){
