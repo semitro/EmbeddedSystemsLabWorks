@@ -90,6 +90,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_UART4_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   struct Password secpass = {
 		  9,
@@ -101,7 +102,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	  security(&secpass);
+  uint8_t pData[5] = {'A', '0', 'C', '\n', '\r'};
+  uint32_t timeout = 100;
+  while(1){
+	  HAL_UART_Transmit(&huart1, pData, sizeof(*pData)*5, timeout);
+	  for(int i = 0; i < 100000; i++)
+		  ;
+	  //  security(&secpass);
+  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
