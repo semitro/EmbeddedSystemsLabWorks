@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -88,6 +89,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_UART4_Init();
   /* USER CODE BEGIN 2 */
   struct Password secpass = {
 		  9,
@@ -98,11 +100,10 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Infinite loop */
-  while(1){
   /* USER CODE BEGIN WHILE */
 	  security(&secpass);
     /* USER CODE END WHILE */
-  }
+
     /* USER CODE BEGIN 3 */
   /* USER CODE END 3 */
 }
