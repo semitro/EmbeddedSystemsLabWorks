@@ -64,6 +64,7 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
+extern int fUART_recieved = 0;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -102,13 +103,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t pData[5] = {'A', '0', 'C', '\n', '\r'};
+
   uint32_t timeout = 100;
+  size_t i = 2;
   while(1){
-	  HAL_UART_Transmit(&huart1, pData, sizeof(*pData)*5, timeout);
-	  for(int i = 0; i < 100000; i++)
-		  ;
-	  //  security(&secpass);
+
   }
     /* USER CODE END WHILE */
 

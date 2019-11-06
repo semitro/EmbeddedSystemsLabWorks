@@ -1,24 +1,36 @@
 #include "autumn_security.h"
 
-void security(Password* pass){
-	size_t level = 0;
-	size_t failed = 0;
-	while (level != pass->len){
-		if (read_press() == pass->pass[level]) {
-			blink_led_once(COLOR_YELLOW);
-			level++;
+int security(char pass[], size_t level, size_t max_lvl, char character){
+	static size_t failed = 0;
+	if(level == max_lvl){
+		light_led(COLOR_GREEN, 2000);
+		return 0;
+	}
+	if (character == pass[level]) {
+		blink_led_once(COLOR_YELLOW);
+		level++;
+	}
+	else {
+		failed++;
+		level = 0;
+		if (failed == 3) {
+			failed = 0;
+			blink_led(COLOR_RED, 10);
 		}
 		else {
-			failed++;
-			level = 0;
-			if (failed == 3) {
-				failed = 0;
-				blink_led(COLOR_RED, 10);
-			}
-			else {
-				blink_led_once(COLOR_RED);
-			}
+			blink_led_once(COLOR_RED);
 		}
 	}
-	light_led(COLOR_GREEN, 2000);
+	return level;
 }
+
+HAL_UART_Recieve_IT
+...
+read() {
+	while(!flag)
+		;
+	ret = buf[0];
+	HAL_UART_Recieve_IT
+	return ret
+}
+

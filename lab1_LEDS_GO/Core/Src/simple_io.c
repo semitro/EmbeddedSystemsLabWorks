@@ -33,3 +33,19 @@ Press read_press() {
 	}
 	return PRESS_SHORT;
 }
+
+int is_butt_being_touched() {
+	return HAL_GPIO_ReadPin(BUTTON) == GPIO_PIN_RESET;
+}
+
+int was_butt_touched() {
+	static int prev = 0;
+	if (!prev && is_butt_being_touched()) {
+		prev = 1;
+		return 1;
+	}
+	else if (prev && !is_butt_being_touched()) {
+		prev = 0;
+	}
+	return 0;
+}
