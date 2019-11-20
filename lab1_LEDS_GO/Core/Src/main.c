@@ -46,7 +46,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+char inputMode = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -64,11 +64,9 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
-extern int fUART_recieved = 0;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
   /* USER CODE END 1 */
   
 
@@ -93,12 +91,9 @@ int main(void)
   MX_UART4_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  struct Password secpass = {
-		  9,
-		  {
-				  PRESS_SHORT, PRESS_SHORT, PRESS_SHORT, PRESS_LONG, PRESS_LONG, PRESS_LONG, PRESS_SHORT, PRESS_SHORT, PRESS_SHORT
-		  }
-  };
+  char pass[9] = "qwerty";
+  char level = 0;
+  uart_ret ret;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -107,7 +102,17 @@ int main(void)
   uint32_t timeout = 100;
   size_t i = 2;
   while(1){
+		 ret.status = HAL_BUSY;
+		 while(ret.status!=HAL_OK){
+			 if(inputMode){
+				 ret=read_char_IT();
+			 }else{
+				 ret=read_char();
+			 }
+		 }
+		 if(ret.character!="+"){
 
+		 }
   }
     /* USER CODE END WHILE */
 

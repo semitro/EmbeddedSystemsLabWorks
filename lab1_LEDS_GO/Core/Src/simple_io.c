@@ -4,6 +4,8 @@
 
 #define BLINK_TIME 80
 
+extern char inputMode;
+
 void blink_led_once(Color color) {
 	light_led(color, BLINK_TIME);
 }
@@ -48,4 +50,9 @@ int was_butt_touched() {
 		prev = 0;
 	}
 	return 0;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	inputMode = !inputMode;
+	HAL_UART_Abort(&huart1);
 }

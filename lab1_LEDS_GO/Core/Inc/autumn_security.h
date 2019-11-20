@@ -3,6 +3,6 @@
 
 #include "simple_io.h"
 
-void security(char pass[]);
+int security(char pass[], size_t level, size_t max_lvl, char character);
 
 #endif // SEC_SEC_H

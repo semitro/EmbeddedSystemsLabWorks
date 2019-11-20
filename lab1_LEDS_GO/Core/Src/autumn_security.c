@@ -1,7 +1,7 @@
 #include "autumn_security.h"
 
 int security(char pass[], size_t level, size_t max_lvl, char character){
-	static size_t failed = 0;
+	static char failed = 0;
 	if(level == max_lvl){
 		light_led(COLOR_GREEN, 2000);
 		return 0;
@@ -23,14 +23,3 @@ int security(char pass[], size_t level, size_t max_lvl, char character){
 	}
 	return level;
 }
-
-HAL_UART_Recieve_IT
-...
-read() {
-	while(!flag)
-		;
-	ret = buf[0];
-	HAL_UART_Recieve_IT
-	return ret
-}
-

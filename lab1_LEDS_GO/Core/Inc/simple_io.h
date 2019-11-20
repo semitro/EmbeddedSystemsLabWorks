@@ -2,6 +2,7 @@
 #define SIMPLE_IO_H
 
 #include "stm32f4xx_hal.h"
+#include <usart.h>
 
 typedef enum Color {
 	COLOR_RED = GPIO_PIN_15,
